@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 function Header() {
 	const dispatch = useDispatch();
+	const BACKEND_ADRESS = "https://morning-news-back-chi.vercel.app/"
 	const user = useSelector((state) => state.user.value);
 
 	const [date, setDate] = useState('2050-11-22T23:59:59');
@@ -26,7 +27,7 @@ function Header() {
 	}, []);
 
 	const handleRegister = () => {
-		fetch('http://localhost:3000/users/signup', {
+		fetch(`${BACKEND_ADRESS}users/signup`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signUpUsername, password: signUpPassword }),
@@ -43,7 +44,7 @@ function Header() {
 
 	const handleConnection = () => {
 
-		fetch('http://localhost:3000/users/signin', {
+		fetch(`${BACKEND_ADRESS}users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signInUsername, password: signInPassword }),

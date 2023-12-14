@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import storage from 'redux-persist/lib/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import bookmarks from '../reducers/bookmarks';
@@ -12,7 +12,7 @@ import hiddenArticles from '../reducers/hiddenArticles'
 
 
 const reducers = combineReducers({bookmarks,user,hiddenArticles})
-const persistConfig = { key : 'Morning News', storage : AsyncStorage}
+const persistConfig = { key : 'Morning News', storage}
 const store = configureStore({
   reducer: persistReducer(persistConfig,reducers),
    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),

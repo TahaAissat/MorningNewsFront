@@ -6,7 +6,7 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 
 function TopArticle(props) {
-
+	const BACKEND_ADRESS = "https://morning-news-back-chi.vercel.app/";
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user.value);
 
@@ -15,7 +15,7 @@ function TopArticle(props) {
 			return;
 		}
 
-		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+		fetch(`${BACKEND_ADRESS}users/canBookmark/${user.token}`)
 			.then(response => response.json())
 			.then(data => {
 				if (data.result && data.canBookmark) {

@@ -8,12 +8,13 @@ import styles from '../styles/Home.module.css';
 function Home() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
   const hidden = useSelector((state) => state.hiddenArticles.value);
+  const BACKEND_ADRESS = "https://morning-news-back-chi.vercel.app/";
 
   const [articlesData, setArticlesData] = useState([]);
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch(`${BACKEND_ADRESS}articles`)
       .then(response => response.json())
       .then(data => {
         setTopArticle(data.articles[0]);

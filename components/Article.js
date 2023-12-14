@@ -9,6 +9,7 @@ import { faBookmark , faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 function Article(props) {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user.value);
+	const BACKEND_ADRESS = "https://morning-news-back-chi.vercel.app/";
 	
 
 	const handleBookmarkClick = () => {
@@ -16,7 +17,7 @@ function Article(props) {
 			return;
 		}
 
-		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+		fetch(`${BACKEND_ADRESS}users/canBookmark/${user.token}`)
 			.then(response => response.json())
 			.then(data => {
 				if (data.result && data.canBookmark) {
